@@ -11,3 +11,6 @@ variable "private_app_subnet_AZ1_cidr" {}
 variable "private_app_subnet_AZ2_cidr" {}
 variable "private_data_subnet_AZ1_cidr" {}
 variable "private_data_subnet_AZ2_cidr" {}
+
+# SG Variables
+variable "ssh_ip" {}
