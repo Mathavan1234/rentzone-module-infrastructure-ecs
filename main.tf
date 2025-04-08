@@ -18,3 +18,18 @@ module "vpc" {
   private_data_subnet_AZ1_cidr = var.private_data_subnet_AZ1_cidr
   private_data_subnet_AZ2_cidr = var.private_data_subnet_AZ2_cidr
 }
+
+# Create NAT Gateways Module
+module "nat-gateway" {
+  source                     = "git@github.com:Mathavan1234/Building-AWS-Infrastructure-with-Terraform-Modules.git//NAT-Gateway"
+  project_name               = local.project_name
+  environment                = local.environment
+  public_subnet_az1_id       = module.vpc.public_subnet_az1_id
+  internet_gateway           = module.vpc.internet_gateway_id
+  public_subnet_az2_id       = module.vpc.public_subnet_az2_id
+  vpc_id                     = module.vpc.vpc_id
+  private_app_subnet_az1_id  = module.vpc.private_app_subnet_az1_id
+  private_data_subnet_az1_id = module.vpc.private_data_subnet_az1_id
+  private_app_subnet_az2_id  = module.vpc.private_app_subnet_az2_id
+  private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
+}
