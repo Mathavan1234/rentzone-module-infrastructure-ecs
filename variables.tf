@@ -24,3 +24,6 @@ variable "multi_az_deployment" {}
 # RDS Variables
 variable "domain_name" {}
 variable "alternative_names" {}
+
+# ALB Variables
+variable "target_type" {}
