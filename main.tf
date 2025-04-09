@@ -58,3 +58,10 @@ module "rds" {
   database_security_group_id   = module.security-group.database_security_group_id
 
 }
+
+# Request SSL Certificate
+module "acm" {
+  source            = "git@github.com:Mathavan1234/Building-AWS-Infrastructure-with-Terraform-Modules.git//ACM"
+  domain_name       = var.domain_name
+  alternative_names = var.alternative_names
+}
