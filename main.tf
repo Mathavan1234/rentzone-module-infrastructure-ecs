@@ -111,3 +111,11 @@ module "ecs" {
   app_server_security_group_id = module.security-group.app_server_security_group_id
   alb_target_group_arn         = module.alb.alb_target_group_arn
 }
+
+# Create ASG for ECS Service
+module "asg" {
+  source       = "git@github.com:Mathavan1234/Building-AWS-Infrastructure-with-Terraform-Modules.git//ASG-ECS"
+  project_name = local.project_name
+  environment  = local.environment
+  ecs_service  = module.ecs.ecs_service
+}
