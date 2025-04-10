@@ -77,5 +77,12 @@ module "alb" {
   target_type           = var.target_type
   vpc_id                = module.vpc.vpc_id
   certificate_arn       = module.acm.certificate_arn
+}
 
+# Create S3 Bucket
+module "s3" {
+  source               = "git@github.com:Mathavan1234/Building-AWS-Infrastructure-with-Terraform-Modules.git//S3"
+  project_name         = local.project_name
+  env_file_bucket_name = var.env_file_bucket_name
+  env_file_name        = var.env_file_name
 }
