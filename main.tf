@@ -119,3 +119,17 @@ module "asg" {
   environment  = local.environment
   ecs_service  = module.ecs.ecs_service
 }
+
+# Create record set in Route 53
+module "route-53" {
+  source                             = "git@github.com:Mathavan1234/Building-AWS-Infrastructure-with-Terraform-Modules.git//Route-53"
+  domain_name                        = module.acm.domain_name
+  record_name                        = var.record_name
+  application_load_balancer_dns_name = module.application_load_balancer.application_load_balancer_dns_name
+  application_load_balancer_zone_id  = module.application_load_balancer.application_load_balancer_zone_id
+}
+
+# Print the Website URL
+output "website_url" {
+  value = join("", ["http://", var.record_name, ".", var.domain_name])
+}
