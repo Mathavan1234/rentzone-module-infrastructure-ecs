@@ -86,3 +86,11 @@ module "s3" {
   env_file_bucket_name = var.env_file_bucket_name
   env_file_name        = var.env_file_name
 }
+
+# Create ECS Task Execution Role
+module "ecs_task_execution_role" {
+  source               = "git@github.com:Mathavan1234/Building-AWS-Infrastructure-with-Terraform-Modules.git//IAM-Role"
+  project_name         = local.project_name
+  env_file_bucket_name = module.s3.env_file_bucket_name
+  environment          = local.environment
+}
