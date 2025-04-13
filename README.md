@@ -1,105 +1,109 @@
-## 🚀 Building AWS Infrastructure with Terraform Modules
-This project demonstrates how to deploy a dynamic web application on AWS using Terraform Modules, Docker, ECR, and ECS, ensuring high availability, modularity, and scalability.
+# 🚀 Building AWS Infrastructure with Terraform Modules
 
-# 📌 Features
--Infrastructure as Code with Terraform
--Modular and reusable Terraform configurations
--S3 backend for state file management
--DynamoDB for state file locking
+This project demonstrates how to deploy a **dynamic web application** on **AWS** using **Terraform Modules**, **Docker**, **ECR**, and **ECS**, ensuring **high availability**, **modularity**, and **scalability**.
 
-ACM, RDS, ALB, ECS, Auto Scaling, and Route 53 integration
+---
 
-🔧 Prerequisites
-AWS Account
+## 📌 Features
 
-GitHub Account
+- Infrastructure as Code with **Terraform**
+- Modular and reusable Terraform configurations
+- **S3** backend for state file management
+- **DynamoDB** for state file locking
+- **ACM**, **RDS**, **ALB**, **ECS**, **Auto Scaling**, and **Route 53** integration
 
-Terraform Installed
+---
 
-AWS CLI Configured
+## 🔧 Prerequisites
 
-SSH Key Pair generated locally
+- AWS Account
+- GitHub Account
+- Terraform Installed
+- AWS CLI Configured
+- SSH Key Pair generated locally
 
-🛠️ Setup Overview
-1. SSH Key & GitHub Access
-Generate SSH key using PowerShell
+---
 
-Upload public key to GitHub to clone repositories
+## 🛠️ Setup Overview
 
-2. IAM User & Access Keys
-Create IAM User with AdministratorAccess
+### 1. SSH Key & GitHub Access
+- Generate SSH key using PowerShell
+- Upload public key to GitHub to clone repositories
 
-Generate Access Key ID and Secret Access Key
+### 2. IAM User & Access Keys
+- Create IAM User with `AdministratorAccess`
+- Generate **Access Key ID** and **Secret Access Key**
 
-3. Configure Terraform AWS Profile
-Create named profile in AWS CLI for Terraform authentication
+### 3. Configure Terraform AWS Profile
+- Create named profile in AWS CLI for Terraform authentication
 
-☁️ Terraform Backend Setup
-S3 Bucket for State File
-Stores Terraform state securely
+---
 
-Enables team collaboration
+## ☁️ Terraform Backend Setup
 
-DynamoDB Table for State Locking
-Prevents concurrent modifications to the infrastructure
+### S3 Bucket for State File
+- Stores Terraform state securely
+- Enables team collaboration
 
-📂 Terraform Structure
-Providers Configuration
-Configure AWS provider in providers.tf
+### DynamoDB Table for State Locking
+- Prevents concurrent modifications to the infrastructure
 
-Backend Configuration
-Set up backend in backend.tf
+---
 
-🧩 Terraform Modules
-VPC Module
-Creates VPC, Internet Gateway, Subnets, Route Tables
+## 📂 Terraform Structure
 
-Ensures High Availability across 2 AZs
+### Providers Configuration
+- Configure AWS provider in `providers.tf`
 
-NAT Gateway Module
-Includes Elastic IPs, NAT Gateways, Private Route Tables, and Subnet Associations
+### Backend Configuration
+- Set up backend in `backend.tf`
 
-Security Group (SG) Module
-ALB, Bastion Host, App Server, and Database SGs
+---
 
-RDS Module
-Creates DB Subnet Group
+## 🧩 Terraform Modules
 
-Launches RDS Instance from snapshot
+### VPC Module
+- Creates VPC, Internet Gateway, Subnets, Route Tables
+- Ensures High Availability across **2 AZs**
 
-ACM Module
-Requests Public Certificates
+### NAT Gateway Module
+- Includes Elastic IPs, NAT Gateways, Private Route Tables, and Subnet Associations
 
-Domain validation using Route 53
+### Security Group (SG) Module
+- ALB, Bastion Host, App Server, and Database SGs
 
-ALB Module
-Creates Application Load Balancer
+### RDS Module
+- Creates DB Subnet Group
+- Launches RDS Instance from snapshot
 
-Includes listeners on ports 80 (redirect) & 443 (forward)
+### ACM Module
+- Requests Public Certificates
+- Domain validation using **Route 53**
 
-S3 Module (for App Env Vars)
-Stores environment variable files for ECS containers
+### ALB Module
+- Creates Application Load Balancer
+- Includes listeners on ports 80 (redirect) & 443 (forward)
 
-IAM Role for ECS
-Task Execution Role with proper permissions
+### S3 Module (for App Env Vars)
+- Stores environment variable files for ECS containers
 
-ECS Module
-ECS Cluster, Task Definition, and Service
+### IAM Role for ECS
+- Task Execution Role with proper permissions
 
-Auto Scaling Group Module
-Auto Scales ECS services based on policy
+### ECS Module
+- ECS Cluster, Task Definition, and Service
 
-Route 53 Module
-DNS records to access app via domain
+### Auto Scaling Group Module
+- Auto Scales ECS services based on policy
 
-✅ Deployment Steps
-bash
-Copy
-Edit
+### Route 53 Module
+- DNS records to access app via domain
+
+---
+
+## ✅ Deployment Steps
+
+```bash
 terraform init          # Initialize Terraform
 terraform plan          # Review infrastructure changes
 terraform apply         # Apply the changes and create resources
-🌐 Final Output
-Application accessible via a custom domain
-
-Load Balanced, Auto-scaled, Secure deployment using AWS best practices
