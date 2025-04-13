@@ -1,14 +1,11 @@
-🚀 Building AWS Infrastructure with Terraform Modules
+## 🚀 Building AWS Infrastructure with Terraform Modules
 This project demonstrates how to deploy a dynamic web application on AWS using Terraform Modules, Docker, ECR, and ECS, ensuring high availability, modularity, and scalability.
 
-📌 Features
-Infrastructure as Code with Terraform
-
-Modular and reusable Terraform configurations
-
-S3 backend for state file management
-
-DynamoDB for state file locking
+# 📌 Features
+-Infrastructure as Code with Terraform
+-Modular and reusable Terraform configurations
+-S3 backend for state file management
+-DynamoDB for state file locking
 
 ACM, RDS, ALB, ECS, Auto Scaling, and Route 53 integration
 
