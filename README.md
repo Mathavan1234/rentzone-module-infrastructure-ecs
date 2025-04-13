@@ -1,3 +1,4 @@
+![Alt text](/Reference_Architecture_Diagram.png)
 # 🚀 Building AWS Infrastructure with Terraform Modules
 
 This project demonstrates how to deploy a **dynamic web application** on **AWS** using **Terraform Modules**, **Docker**, **ECR**, and **ECS**, ensuring **high availability**, **modularity**, and **scalability**.
